@@ -1,5 +1,6 @@
 import React from 'react';
 import { Modal, SafeAreaView, ScrollView, TextInput, TouchableOpacity, Text, StyleSheet, View } from 'react-native';
+import { normalizeFont, scaleHeight, scaleWidth } from '../responsive/responsive';
 
 const TaskModal = ({
   visible,
@@ -18,113 +19,165 @@ const TaskModal = ({
       animationType="fade"
       onRequestClose={cancelRequest}
     >
-      <SafeAreaView style={styles.container8}>
-        <ScrollView style={styles.scrollView8}>
-          <View style={styles.view8}>
+
+          <View style={styles.view}>
+            <View style={styles.editWindow}>
             <View style={styles.column8}>
+              <View style={styles.minInputContainer}>
               <TextInput
                 placeholder={"Mini Input..."}
+         placeholderTextColor= "#F0E3CA"
                 value={editedTitle}
                 onChangeText={setEditedTitle}
                 style={styles.input8}
+                           
               />
-              <TextInput
+              </View>
+          
+          <View style={styles.maxInputContainer}>
+          <TextInput
                 placeholder={"Max Input..."}
+                 placeholderTextColor= "#F0E3CA"
                 value={editedNote}
                 onChangeText={setEditedNote}
+                multiline
                 style={styles.input9}
               />
+
+          </View>
+
               <View style={styles.row}>
                 <TouchableOpacity style={styles.button} onPress={cancelEditing}>
+                  <View style={styles.textContainer}>
                   <Text style={styles.text}>{"Cancel"}</Text>
+                  </View>
+             
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.button2} onPress={saveChanges}>
+                <TouchableOpacity style={styles.button} onPress={saveChanges}>
+                  <View style={styles.textContainer}>
                   <Text style={styles.text}>{"Save"}</Text>
+                  </View>
+             
                 </TouchableOpacity>
               </View>
             </View>
+            </View>
           </View>
-        </ScrollView>
-      </SafeAreaView>
+
     </Modal>
   );
 };
 
 export default TaskModal;
 const styles = StyleSheet.create({
-    container8: {
-        flex: 1,
-        backgroundColor: "#FFFFFF",
-    },
-    view8:{
-        backgroundColor: "#070707E0",
-            paddingTop: 393,
+
+    view:{
+      flex: 1,
+      backgroundColor: "#070707E3",
+      justifyContent: 'flex-end',
+      },
+      editWindow:{
+        width:scaleWidth(360),
+        height:scaleHeight(451),
+        padding: scaleWidth(18),
+        borderTopLeftRadius:8,
+        borderTopRightRadius:8,
+        backgroundColor:"#1B1A17",
+
       },
       column8: {
-            backgroundColor: "#1B1A17",
-            borderTopLeftRadius: 8,
-            borderTopRightRadius: 8,
-            padding: 18,
-            marginHorizontal: 15,
+        width:scaleWidth(324),
+        height:scaleHeight(415),
+        gap:scaleHeight(8)
         },
+
+        minInputContainer:{
+          width:scaleWidth(324),
+          height:scaleHeight(32),
+          borderRadius:4,
+          borderWidth:1,
+          borderColor:"#A35709",
+          backgroundColor:"#242320",
+         
+        },
+        maxInputContainer:{
+          width:scaleWidth(324),
+          height:scaleHeight(343),
+          borderRadius:4,
+          borderWidth:1,
+          borderColor:"#A35709",
+          backgroundColor:"#242320"
+        }
+,
+
+
+
         input8: {
+
+         top:scaleHeight(3),
+          left:scaleWidth(9),
+          fontWeight:400,
             color: "#F0E3CA",
-            fontSize: 14,
-            marginBottom: 8,
-            backgroundColor: "#242320",
-            borderColor: "#A35709",
-            borderRadius: 4,
-            borderWidth: 1,
-            paddingVertical: 7,
-            paddingLeft: 9,
-            paddingRight: 18,
-        },
-        input9: {
-            color: "#F0E3CA",
-            fontSize: 14,
-            marginBottom: 8,
-            backgroundColor: "#242320",
-            borderColor: "#A35709",
-            borderRadius: 4,
-            borderWidth: 1,
-            paddingVertical: 8,
-            paddingLeft: 9,
-            paddingRight: 18,
-        },
+            fontSize: normalizeFont(14),
+            lineHeight:scaleHeight(18),
+            alignItems:"center",},
+
+
+            input9: {
+              textAlignVertical:"top",
+              width:scaleWidth(306),
+              height:scaleHeight(326.72),
+              top:scaleHeight(4.14),
+              left:scaleWidth(9),
+              fontWeight:400,
+                color: "#F0E3CA",
+                fontSize: normalizeFont(14),
+                lineHeight:scaleHeight(18),
+                alignItems:"center",},
+
+                row: {
+                  flexDirection: 'row',
+                  justifyContent: 'center',
+                  gap:scaleWidth(12),
+                  width:scaleWidth(324),
+                  height:scaleHeight(24)
+                },
+
+
+
         button: {
             backgroundColor: "#242320",
             borderColor: "#A35709",
             borderRadius: 4,
             borderWidth: 1,
-            paddingVertical: 6,
-            paddingHorizontal: 3,
-            marginRight: 10,
+            width:scaleWidth(64),
+            height:scaleHeight(24),
+            justifyContent:"center"
+       
           },
-          button2: {
-            backgroundColor: "#242320",
-            borderColor: "#FF8303",
-            borderRadius: 4,
-            borderWidth: 1,
-            paddingVertical: 6,
-            paddingHorizontal: 3,
+          textContainer:{
+            width:scaleWidth(54.86),
+            height:scaleHeight(12),
+            left:scaleWidth(4.57),
+               justifyContent:"center",
+            alignItems:"center",
+            bottom:scaleHeight(1)
+            
           },
+
 
           text: {
             color: "#F0E3CA",
-            fontSize: 22,
+            fontSize: normalizeFont(10),
         fontFamily: 'Roboto-Regular', 
-            fontWeight: "normal",
-            marginBottom: 4,
+            fontWeight: "400",
+            lineHeight:scaleHeight(18),
+         
+      
         },
         
-      row: {
-        flexDirection: "row",
-        alignItems: "flex-start",
-      },
-      scrollView8: {
-        flex: 1,
-        backgroundColor: "#1B1A17",
-      },
+   
+
 
 
 

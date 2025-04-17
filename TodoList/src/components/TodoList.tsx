@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { FlatList, View, Pressable, Text, StyleSheet } from 'react-native';
+import { FlatList, View, Pressable, Text, StyleSheet, ScrollView } from 'react-native';
 import { useTaskStore } from '../store/taskStore';
 import TaskItem from './TaskItem'; // Task Item Component
 import TaskModal from './TaskModal'; // Separate Modal Component
 import DeleteModal from './DeleteModal'; // Separate Delete Modal Component
-
+import { scaleWidth, scaleHeight, normalizeFont } from '../responsive/responsive'
+import ShareSocial from './ShareSocial';
 const TodoList = () => {
   const { tasks, deleteTask, updateTask } = useTaskStore();
   const [selectedTaskId, setSelectedTaskId] = useState<number | null>(null);
@@ -13,6 +14,9 @@ const TodoList = () => {
   const [editingTaskId, setEditingTaskId] = useState<number | null>(null);
   const [editedTitle, setEditedTitle] = useState('');
   const [editedNote, setEditedNote] = useState('');
+    const [isDeleting, setIsDeleting] = useState(false);
+    const[socialModel,setSocialModel]=useState(false)
+
 
   const confirmDelete = (id: number) => {
     setSelectedTaskId(id);
@@ -21,11 +25,18 @@ const TodoList = () => {
   const toggleExpand = (taskId: number) => {
     setSelectedTaskId(prev => (prev === taskId ? null : taskId));
   };
+  const handleSocialModel=()=>{
+    setSocialModel(true)
+  }
+  const CloseSocialModel=()=>{
+    setSocialModel(false)
+  }
   const handleDelete = () => {
     if (selectedTaskId !== null) {
       deleteTask(selectedTaskId);
       setModalVisible(false);
       setSelectedTaskId(null);
+      setIsDeleting(true)
     }
   };
   const startEditing = (task: any) => {
@@ -36,13 +47,24 @@ const TodoList = () => {
   };
 
   const cancelEditing = () => {
+    setIsDeleting(true)
+    setUpdateModalVisible(false);
     setEditingTaskId(null);
+
     setEditedTitle('');
     setEditedNote('');
-    setUpdateModalVisible(false);
+ 
   };
+
+  const closeDeleteModel=()=>{
+    setIsDeleting(true)
+    setModalVisible(false)
+    
+
+  }
   const cancelRequest=()=>{
     setModalVisible(false)
+    setSelectedTaskId(null);
   }
 
   const saveChanges = () => {
@@ -60,30 +82,46 @@ const TodoList = () => {
   };
 
   return (
-    <View style={{ flex: 1 }}>
-      {tasks.length === 0 ? (
-        <View style={styles.column4}>
-          <View style={styles.box} />
-          <Text style={styles.text4}>{"No tasks"}</Text>
-          <View style={styles.box2} />
-        </View>
-      ) : (
-        <FlatList
-          data={tasks}
-          keyExtractor={(item) => item.id.toString()}
-          renderItem={({ item }) => (
-            <TaskItem
-              task={item}
-              cancelEditing={cancelEditing}
-              confirmDelete={confirmDelete}
-              startEditing={startEditing}
-              toggleComplete={toggleComplete}
-              toggleExpand={toggleExpand}
-              selectedTaskId={selectedTaskId}
-            />
-          )}
-        />
+    <View>
+ {!modalVisible && (
+        tasks.length === 0 ? (
+          <View style={styles.column2}>
+            <View style={styles.box} />
+            <Text style={styles.text}>{"No tasks"}</Text>
+            <View style={styles.box2} />
+          </View>
+        ) : (
+          <FlatList
+            style={styles.column10}
+            data={tasks}
+            keyExtractor={(item) => item.id.toString()}
+            renderItem={({ item }) => (
+              <TaskItem
+                task={item}
+                cancelEditing={cancelEditing}
+                confirmDelete={confirmDelete}
+                startEditing={startEditing}
+                toggleComplete={toggleComplete}
+                toggleExpand={toggleExpand}
+                selectedTaskId={selectedTaskId}
+                isDeleting={isDeleting}
+                setIsDeleting={setIsDeleting}
+                handleSocialModel={handleSocialModel}
+                
+              />
+            )}
+          />
+        )
       )}
+
+      
+      {/* Delete Confirmation Modal */}
+      <DeleteModal
+        visible={modalVisible}
+        handleDelete={() => handleDelete()}
+        closeModal={closeDeleteModel}
+      />
+
       {/* Update Modal */}
       <TaskModal
         visible={updateModalVisible}
@@ -93,22 +131,64 @@ const TodoList = () => {
         setEditedTitle={setEditedTitle}
         editedNote={editedNote}
         setEditedNote={setEditedNote}
+        cancelEditing={cancelEditing}
       />
-      {/* Delete Confirmation Modal */}
-      <DeleteModal
-        visible={modalVisible}
-        handleDelete={() => handleDelete()}
-        closeModal={() => setModalVisible(false)}
+     <ShareSocial
+        visible={socialModel}
+        
+        closeModal={CloseSocialModel}
       />
-    </View>
+
+ </View>
   );
 };
 
 const styles = StyleSheet.create({
-  column4: { alignItems: 'center', paddingBottom: 12 },
-  box: { width: 64, height: 3, backgroundColor: '#FF8303', marginBottom: 9 },
-  text4: { color: '#FFFFFF', fontSize: 24 },
-  box2: { width: 64, height: 3, backgroundColor: '#FF8303', marginBottom: 623 },
+  column2: {
+    width: scaleWidth(100),
+    height: scaleHeight(53),
+    alignItems: "center",
+    marginTop: scaleHeight(78), // similar to 'top' if used relatively
+    marginLeft: scaleWidth(145), // if inside a row or container
+    gap: scaleHeight(12), // this works only in RN 0.71+ or use margins between children manually
+  },
+
+
+  box: {
+    width: scaleWidth(64),
+    height: scaleHeight(3),
+    backgroundColor: "#FF8303",
+   
+	},
+	box2: {
+    width: scaleWidth(64),
+    height: scaleHeight(3),
+    backgroundColor: "#FF8303",
+
+  },
+
+  
+	text: {
+
+
+    width:scaleWidth(100),
+    height:scaleHeight(29),
+    fontWeight:400,
+    
+    justifyContent:"center",
+    alignItems:"center",
+		color: "#FFFFFF",
+    fontSize: normalizeFont(24),
+	},
+  column10: { 
+    marginTop: scaleHeight(33),
+    left: scaleWidth(23),
+   
+    width:scaleWidth(345)
+   },
+
+
+
 });
 
 export default TodoList;

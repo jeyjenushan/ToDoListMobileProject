@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, TextInput, Button, StyleSheet, SafeAreaView, ScrollView, Image, Text, Pressable } from 'react-native';
 import { useTaskStore } from '../store/taskStore';
+import { scaleWidth, scaleHeight, normalizeFont } from '../responsive/responsive';
 
 const TodoInput = () => {
   const [title, setTitle] = useState('');
@@ -13,19 +14,28 @@ const TodoInput = () => {
       setTitle('');
       setNote('');
     }
+	
   };
 
   return (
 
 <View style={styles.row}>
+
+
 <View style={styles.column}>
-      <TextInput
+	<View style={styles.textInputContainer}>
+	
+		<TextInput
         placeholder={"Title..."}
           placeholderTextColor="#F0E3CA"
         style={styles.input}
         value={title}
         onChangeText={setTitle}
       />
+
+	</View>
+	<View style={styles.textInputContainer}>
+
       <TextInput
     	placeholder={"About..."}
         placeholderTextColor="#F0E3CA"
@@ -33,16 +43,23 @@ const TodoInput = () => {
         value={note}
         onChangeText={setNote}
       />
+	  
+			  </View>
           </View>
-          <Pressable onPress={handleAdd}>
-  <Image
-    source={{ uri: "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/6152f505-45d9-4964-8e82-e9badb6bba4e" }}
-    resizeMode="stretch"
-    style={styles.image}
-  />
+
+<Pressable onPress={handleAdd} style={styles.rectangleContainer}>
+
+    <Image
+      source={require("../assets/plus.png")} // Replace with your actual image URL
+      resizeMode="contain"
+      style={styles.addIcon}
+    />
+
 </Pressable>
 
     </View>
+
+
 
 			
 
@@ -52,45 +69,89 @@ const TodoInput = () => {
 const styles = StyleSheet.create({
 
 
+	row: {
+	
+		flexDirection: "row",
+		gap:8,
+		marginTop: scaleHeight(23),
+		marginLeft: scaleWidth(23),
+	    height:scaleHeight(70),
+	   width:scaleWidth(345),
+	 
+	},
 	column: {
-		flex: 1,
-		marginRight: 8,
-	},
 
-	image: {
-		width: 70,
-		height: 70,
+	    width:scaleWidth(267),
+		height:scaleHeight(70),
+		gap:6
 	},
+	textInputContainer:{
+		width: scaleWidth(267),
+		height: scaleHeight(32),
+		backgroundColor:"#242320"
+		
+
+
+},
+
+
+
+
+
 	input: {
-		color: "#F0E3CA",
-		fontSize: 14,
-		marginBottom: 6,
-		backgroundColor: "#242320",
-		borderColor: "#FF8303",
-		borderRadius: 4,
-		borderWidth: 1,
-		paddingVertical: 7,
-		paddingLeft: 14,
-		paddingRight: 28,
+      flex:1,
+		fontSize: normalizeFont(14),
+		fontWeight:400,
+       lineHeight:scaleHeight(14),
+	   borderColor: "#FF8303",
+	   borderRadius: 4,
+	   borderWidth: 1,
+		color: '#F0E3CA',
+
+	    paddingLeft: scaleWidth(14), // Replaced 'left' with padding
+    paddingTop: scaleHeight(5), 
+		
+		
+		
+
+
 	},
 	input2: {
-		color: "#F0E3CA",
-		fontSize: 14,
-		backgroundColor: "#242320",
+		flex:1,
+		fontSize: normalizeFont(14),
+		fontWeight:400,
+        lineHeight:scaleHeight(18),
 		borderColor: "#FF8303",
 		borderRadius: 4,
 		borderWidth: 1,
-		paddingVertical: 7,
-		paddingLeft: 9,
-		paddingRight: 18,
+		paddingLeft: scaleWidth(14), // Replaced 'left' with padding
+		paddingTop: scaleHeight(5), 
+		color: '#F0E3CA',
 	},
-	row: {
-		alignSelf: "stretch",
-		flexDirection: "row",
-		alignItems: "flex-start",
-		marginTop: 23,
-		marginBottom: 72,
-	},
+
+
+
+	  rectangleContainer: {
+		width: scaleWidth(70),
+		height: scaleHeight(70),
+		borderRadius: 8,
+		borderWidth: 2,
+		borderColor: '#FF8303',
+	  },
+	  addIcon: {
+		width: scaleWidth(24),
+		height: scaleHeight(24),
+		tintColor: '#FF8303',
+		borderRadius: 1,
+		marginTop:23,
+		marginLeft:23
+	
+	  },
+
+
+
+
+
 
 
 });
