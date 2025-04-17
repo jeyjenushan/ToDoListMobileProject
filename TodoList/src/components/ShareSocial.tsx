@@ -1,4 +1,5 @@
 import { Image, Modal, StyleSheet, TouchableWithoutFeedback, View } from "react-native";
+import { normalizeFont, scaleHeight, scaleWidth } from '../responsive/responsive';
 
 const ShareSocial = ({ visible, closeModal }: any) => {
   return (
@@ -46,24 +47,26 @@ const styles = StyleSheet.create({
     backgroundColor: "#1B1A17",
     borderTopLeftRadius: 8,
     borderTopRightRadius: 8,
-    paddingVertical: 14,
-    paddingHorizontal: 20,
-    marginHorizontal: 15,
+    paddingVertical: scaleHeight(14),
+    paddingHorizontal: scaleWidth(20),
+    marginHorizontal: scaleWidth(15),
     alignItems: "center",
     justifyContent: "center",
   },
   circle: {
-    width: 56,
-    height: 56,
+    width: scaleWidth(48),
+    height: scaleHeight(48),
     borderRadius: 28,
-    backgroundColor: "#ffffff20", // semi-transparent white or your preferred color
-    marginRight: 16,
+    backgroundColor: "#ffffff20",
+    marginRight: scaleWidth(16),
     justifyContent: "center",
     alignItems: "center",
   },
   icon: {
-    width: 32,
-    height: 32,
+    width:scaleWidth(21),
+    height: scaleHeight(21),
+   
     resizeMode: "contain",
+
   },
 });

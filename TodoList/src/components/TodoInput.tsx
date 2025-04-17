@@ -100,6 +100,7 @@ const styles = StyleSheet.create({
 
 	input: {
       flex:1,
+	  fontFamily: 'Roboto-Regular',
 		fontSize: normalizeFont(14),
 		fontWeight:400,
        lineHeight:scaleHeight(14),
@@ -118,6 +119,7 @@ const styles = StyleSheet.create({
 	},
 	input2: {
 		flex:1,
+		fontFamily: 'Roboto-Regular',
 		fontSize: normalizeFont(14),
 		fontWeight:400,
         lineHeight:scaleHeight(18),

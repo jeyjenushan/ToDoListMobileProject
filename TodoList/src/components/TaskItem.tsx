@@ -177,12 +177,12 @@ const styles = StyleSheet.create({
   text: {
     color: '#F0E3CA',
     fontSize: normalizeFont(22),
-    fontFamily: 'Roboto-Regular',
+    fontFamily: 'Roboto-Medium',
     fontWeight: 'normal',
     marginBottom: 4,
   },
   text2: {
-    fontFamily: 'Roboto-Medium',
+    fontFamily: 'Roboto-Regular',
     color: '#F0E3CA',
     fontSize: 14,
   },

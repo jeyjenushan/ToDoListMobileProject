@@ -84,7 +84,7 @@ backgroundColor: "#070707E3"
         fontSize: normalizeFont(18),
         lineHeight:scaleHeight(18),
         fontWeight:400,
-        fontFamily:"Roboto",
+        fontFamily:"Roboto-Regular",
         justifyContent:"center",
         alignItems:"center"
       },
@@ -125,7 +125,7 @@ backgroundColor: "#070707E3"
         lineHeight: scaleHeight(12), // Match container height
         textAlign: 'center',
         width: '100%',
-        fontFamily: "Roboto",
+        fontFamily: "Roboto-Regular",
         fontWeight: "400",
       
       },
