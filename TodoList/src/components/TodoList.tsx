@@ -170,7 +170,7 @@ const styles = StyleSheet.create({
   
 	text: {
 
-
+    fontFamily:"Inter_28pt-Regular",
     width:scaleWidth(100),
     height:scaleHeight(29),
     fontWeight:400,
