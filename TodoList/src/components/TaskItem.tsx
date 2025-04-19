@@ -23,7 +23,7 @@ const TaskItem = ({
         <View style={styles.row2}>
           <View style={styles.column3}>
           <Pressable onPress={() =>  {
- 
+        setIsDeleted(false)
  toggleExpand(task.id);}}>
             <Text
               style={[
