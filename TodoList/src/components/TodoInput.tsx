@@ -50,7 +50,7 @@ const TodoInput = () => {
 <Pressable onPress={handleAdd} style={styles.rectangleContainer}>
 
     <Image
-      source={require("../assets/plus.png")} // Replace with your actual image URL
+      source={require("../../assets/Images/plus.png")} // Replace with your actual image URL
       resizeMode="contain"
       style={styles.addIcon}
     />

@@ -13,19 +13,19 @@ const ShareSocial = ({ visible, closeModal }: any) => {
       <View style={styles.overlay}>
         <View style={styles.row}>
           <View style={styles.circle}>
-            <Image source={require("../assets/Content.png")} style={styles.icon} />
+            <Image source={require("../../assets/Images/Content.png")} style={styles.icon} />
           </View>
           <View style={styles.circle}>
-            <Image source={require("../assets/vk.png")} style={styles.icon} />
+            <Image source={require("../../assets/Images/vk.png")} style={styles.icon} />
           </View>
           <View style={styles.circle}>
-            <Image source={require("../assets/telegram.png")} style={styles.icon} />
+            <Image source={require("../../assets/Images/telegram.png")} style={styles.icon} />
           </View>
           <View style={styles.circle}>
-            <Image source={require("../assets/whatsapp.png")} style={styles.icon} />
+            <Image source={require("../../assets/Images/whatsapp.png")} style={styles.icon} />
           </View>
           <View style={styles.circle}>
-            <Image source={require("../assets/facebook.png")} style={styles.icon} />
+            <Image source={require("../../assets/Images/facebook.png")} style={styles.icon} />
           </View>
         </View>
       </View>

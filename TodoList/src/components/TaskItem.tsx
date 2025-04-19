@@ -54,7 +54,7 @@ const TaskItem = ({
           <Pressable onPress={() => {setIsDeleting(true);
             confirmDelete(task.id);}} style={styles.rectangleContainer}>
             <Image
-              source={require('../assets/cross.png')}
+              source={require('../../assets/Images/cross.png')}
               resizeMode="contain"
               style={styles.crossIcon}
             />
@@ -72,7 +72,7 @@ const TaskItem = ({
               onPress={handleSocialModel}
               >
                 <Image
-                  source={require('../assets/share.png')}
+                  source={require('../../assets/Images/share.png')}
                   resizeMode="stretch"
                   style={styles.image2}
                 />
@@ -83,7 +83,7 @@ const TaskItem = ({
                 onPress={() => toggleComplete(task.id, task.completed)}
               >
                 <Image
-                  source={require('../assets/i.png')}
+                  source={require('../../assets/Images/i.png')}
                   resizeMode="stretch"
                   style={styles.image3}
                 />
@@ -95,7 +95,7 @@ const TaskItem = ({
                   onPress={() => startEditing(task)}
                 >
                   <Image
-                    source={require('../assets/Edit.png')}
+                    source={require('../../assets/Images/Edit.png')}
                     resizeMode="stretch"
                     style={styles.image2}
                   />
