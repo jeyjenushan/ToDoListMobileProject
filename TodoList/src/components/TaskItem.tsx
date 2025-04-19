@@ -10,28 +10,28 @@ const TaskItem = ({
   toggleComplete,
   toggleExpand,
   selectedTaskId,
-  isDeleting,
-  setIsDeleting,
+
   handleSocialModel
 
 }: any) => {
-  const isExpanded = selectedTaskId === task.id;
-
+  let isExpanded = selectedTaskId === task.id;
+  const [isDeleted,setIsDeleted]=useState(false)
 
   return (
     <View style={{ marginBottom: isExpanded ? scaleHeight(8) : scaleHeight(16) }}>
-      <Pressable onPress={() =>  {
-        setIsDeleting(false)
-        toggleExpand(task.id);}}>
+   
         <View style={styles.row2}>
           <View style={styles.column3}>
+          <Pressable onPress={() =>  {
+ 
+ toggleExpand(task.id);}}>
             <Text
               style={[
                 styles.text,
                 task.completed && {
                   textDecorationLine: 'line-through',
-                  textDecorationColor: '#1B1A17',
-                  color: '#A35709',
+                  textDecorationColor: Colors.backgroundLight,
+                  color: Colors.primary,
                 },
               ]}
             >
@@ -42,18 +42,23 @@ const TaskItem = ({
                 styles.text2,
                 task.completed && {
                   textDecorationLine: 'line-through',
-                  textDecorationColor: '#1B1A17',
-                  color: '#A35709',
+                  textDecorationColor: Colors.backgroundLight,
+                  color: Colors.primary,
                 },
               ]}
             >
               {task.note}
             </Text>
+            </Pressable>
           </View>
           
-  
-          <Pressable onPress={() => {setIsDeleting(true);
-            confirmDelete(task.id);}} style={styles.rectangleContainer}>
+          <Pressable 
+          onPress={(e) => {
+            e.stopPropagation(); 
+            // Prevent event bubbling
+            setIsDeleted(true)
+            confirmDelete(task.id);
+          }}  style={styles.rectangleContainer}>
             <Image
               source={require('../../assets/Images/cross.png')}
               resizeMode="contain"
@@ -61,11 +66,11 @@ const TaskItem = ({
             />
           </Pressable>
         </View>
-        </Pressable>
+ 
   
 
       {/* Tools only if expanded and not deleting */}
-      {isExpanded && !isDeleting && (
+      {(isExpanded && !isDeleted) && (
         <View style={{ marginTop: scaleHeight(8), marginBottom: scaleHeight(4) }}>
           <View style={styles.view5}>
             <View style={styles.row3}>

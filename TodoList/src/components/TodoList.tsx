@@ -15,7 +15,7 @@ const TodoList = () => {
   const [editingTaskId, setEditingTaskId] = useState<number | null>(null);
   const [editedTitle, setEditedTitle] = useState('');
   const [editedNote, setEditedNote] = useState('');
-    const [isDeleting, setIsDeleting] = useState(false);
+
     const[socialModel,setSocialModel]=useState(false)
 
 
@@ -36,8 +36,8 @@ const TodoList = () => {
     if (selectedTaskId !== null) {
       deleteTask(selectedTaskId);
       setModalVisible(false);
-      setSelectedTaskId(null);
-      setIsDeleting(true)
+      setSelectedTaskId(selectedTaskId);
+
     }
   };
   const startEditing = (task: any) => {
@@ -48,7 +48,7 @@ const TodoList = () => {
   };
 
   const cancelEditing = () => {
-    setIsDeleting(true)
+
     setUpdateModalVisible(false);
     setEditingTaskId(null);
 
@@ -58,8 +58,9 @@ const TodoList = () => {
   };
 
   const closeDeleteModel=()=>{
-    setIsDeleting(true)
-    setModalVisible(false)
+    setModalVisible(false); // Just close modal without deleting
+    setSelectedTaskId(null);
+
     
 
   }
@@ -84,7 +85,7 @@ const TodoList = () => {
 
   return (
     <View>
- {!modalVisible && (
+ {
         tasks.length === 0 ? (
           <View style={styles.column2}>
             <View style={styles.box} />
@@ -105,15 +106,14 @@ const TodoList = () => {
                 toggleComplete={toggleComplete}
                 toggleExpand={toggleExpand}
                 selectedTaskId={selectedTaskId}
-                isDeleting={isDeleting}
-                setIsDeleting={setIsDeleting}
+                setSelectedTaskId={setSelectedTaskId}
                 handleSocialModel={handleSocialModel}
                 
               />
             )}
           />
         )
-      )}
+      }
 
       
       {/* Delete Confirmation Modal */}

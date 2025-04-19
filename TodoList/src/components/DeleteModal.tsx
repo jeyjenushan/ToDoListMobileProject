@@ -3,6 +3,7 @@ import { Modal, SafeAreaView, ScrollView, View, Text, TouchableOpacity, StyleShe
 import { normalizeFont, scaleHeight, scaleWidth } from '../constant/responsive';
 import { Colors } from '../constant/Colors';
 
+
 const DeleteModal = ({ visible, handleDelete, closeModal }: any) => {
   return (
     <Modal
@@ -42,25 +43,24 @@ const DeleteModal = ({ visible, handleDelete, closeModal }: any) => {
           </View>
   
     </Modal>
-  );
-};
+  )};
 
 export default DeleteModal;
 const styles = StyleSheet.create({
 
 
       view: {
-        width: scaleWidth(390),
-height: scaleHeight(844),
-gap: 10,
-alignItems:"center",
+        flex:1,
+
+          alignItems:"center",
 justifyContent:"center",
-    backgroundColor: Colors.backgroundDark + 'E3'
+    backgroundColor:Colors.shareModelBackground,
+
 
 
       },
       column: {
-        backgroundColor: Colors.backgroundLight,
+        backgroundColor: "#1B1A17",
         borderRadius: 4,
         width:scaleWidth(281),
         height:scaleHeight(143),
