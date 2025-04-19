@@ -1,5 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { Task } from '../store/taskStore';
+import { Task } from '../types/Task';
 
 const STORAGE_KEY = 'TASKS';
 

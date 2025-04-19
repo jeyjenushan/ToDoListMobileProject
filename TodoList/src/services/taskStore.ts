@@ -1,12 +1,7 @@
 import { create } from 'zustand';
-import { saveTasksToStorage } from '../utils/storage';
+import { saveTasksToStorage } from './storage';
 
-export type Task = {
-  id: number;
-  title: string;
-  note: string;
-  completed: boolean;
-};
+import { Task } from '../types/Task';
 
 type TaskStore = {
   tasks: Task[];

@@ -1,5 +1,7 @@
 import { Image, Modal, StyleSheet, TouchableWithoutFeedback, View } from "react-native";
-import { normalizeFont, scaleHeight, scaleWidth } from '../responsive/responsive';
+import { normalizeFont, scaleHeight, scaleWidth } from '../constant/responsive';
+import { Colors } from "../constant/Colors";
+
 
 const ShareSocial = ({ visible, closeModal }: any) => {
   return (
@@ -40,11 +42,11 @@ const styles = StyleSheet.create({
   overlay: {
     flex: 1,
     justifyContent: "flex-end",
-    backgroundColor: "#070707E0",
+    backgroundColor: Colors.shareModelBackground
   },
   row: {
     flexDirection: "row",
-    backgroundColor: "#1B1A17",
+    backgroundColor: Colors.backgroundLight,
     borderTopLeftRadius: 8,
     borderTopRightRadius: 8,
     paddingVertical: scaleHeight(14),
@@ -52,19 +54,21 @@ const styles = StyleSheet.create({
     marginHorizontal: scaleWidth(15),
     alignItems: "center",
     justifyContent: "center",
+    height:scaleHeight(76)
   },
   circle: {
     width: scaleWidth(48),
     height: scaleHeight(48),
-    borderRadius: 28,
-    backgroundColor: "#ffffff20",
+    borderRadius: scaleWidth(24),
+   backgroundColor:Colors.circleBackground,
     marginRight: scaleWidth(16),
     justifyContent: "center",
     alignItems: "center",
+ 
   },
   icon: {
-    width:scaleWidth(21),
-    height: scaleHeight(21),
+    width:scaleWidth(24),
+    height: scaleHeight(24),
    
     resizeMode: "contain",
 

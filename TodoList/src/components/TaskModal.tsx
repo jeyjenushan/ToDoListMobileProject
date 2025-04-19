@@ -1,6 +1,8 @@
 import React from 'react';
 import { Modal, SafeAreaView, ScrollView, TextInput, TouchableOpacity, Text, StyleSheet, View } from 'react-native';
-import { normalizeFont, scaleHeight, scaleWidth } from '../responsive/responsive';
+import { normalizeFont, scaleHeight, scaleWidth } from '../constant/responsive';
+import { Colors } from '../constant/Colors';
+
 
 const TaskModal = ({
   visible,
@@ -73,7 +75,7 @@ const styles = StyleSheet.create({
 
     view:{
       flex: 1,
-      backgroundColor: "#070707E3",
+      backgroundColor: Colors.shareModelBackground,
       justifyContent: 'flex-end',
       },
       editWindow:{
@@ -96,8 +98,8 @@ const styles = StyleSheet.create({
           height:scaleHeight(32),
           borderRadius:4,
           borderWidth:1,
-          borderColor:"#A35709",
-          backgroundColor:"#242320",
+          borderColor:Colors.primary,
+          backgroundColor:Colors.backgroundDark,
          
         },
         maxInputContainer:{
@@ -105,8 +107,8 @@ const styles = StyleSheet.create({
           height:scaleHeight(343),
           borderRadius:4,
           borderWidth:1,
-          borderColor:"#A35709",
-          backgroundColor:"#242320"
+          borderColor:Colors.primary,
+          backgroundColor:Colors.backgroundDark
         }
 ,
 
@@ -118,7 +120,7 @@ const styles = StyleSheet.create({
           left:scaleWidth(9),
           fontFamily: 'Roboto-Regular', 
           fontWeight: "400",
-            color: "#F0E3CA",
+            color: Colors.textPrimary,
             fontSize: normalizeFont(14),
             lineHeight:scaleHeight(18),
             alignItems:"center",},
@@ -132,7 +134,7 @@ const styles = StyleSheet.create({
               left:scaleWidth(9),
               fontFamily: 'Roboto-Regular', 
               fontWeight: "400",
-                color: "#F0E3CA",
+                color: Colors.textPrimary,
                 fontSize: normalizeFont(14),
                 lineHeight:scaleHeight(18),
                 alignItems:"center",},
@@ -148,8 +150,8 @@ const styles = StyleSheet.create({
 
 
         button: {
-            backgroundColor: "#242320",
-            borderColor: "#A35709",
+            backgroundColor: Colors.backgroundDark,
+            borderColor: Colors.primary,
             borderRadius: 4,
             borderWidth: 1,
             width:scaleWidth(64),
@@ -169,7 +171,7 @@ const styles = StyleSheet.create({
 
 
           text: {
-            color: "#F0E3CA",
+            color: Colors.textPrimary,
             fontSize: normalizeFont(10),
         fontFamily: 'Roboto-Regular', 
             fontWeight: "400",

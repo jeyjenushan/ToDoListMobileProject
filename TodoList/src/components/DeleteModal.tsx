@@ -1,6 +1,7 @@
 import React from 'react';
 import { Modal, SafeAreaView, ScrollView, View, Text, TouchableOpacity, StyleSheet } from 'react-native';
-import { normalizeFont, scaleHeight, scaleWidth } from '../responsive/responsive';
+import { normalizeFont, scaleHeight, scaleWidth } from '../constant/responsive';
+import { Colors } from '../constant/Colors';
 
 const DeleteModal = ({ visible, handleDelete, closeModal }: any) => {
   return (
@@ -54,12 +55,12 @@ height: scaleHeight(844),
 gap: 10,
 alignItems:"center",
 justifyContent:"center",
-backgroundColor: "#070707E3"
+    backgroundColor: Colors.backgroundDark + 'E3'
 
 
       },
       column: {
-        backgroundColor: "#1B1A17",
+        backgroundColor: Colors.backgroundLight,
         borderRadius: 4,
         width:scaleWidth(281),
         height:scaleHeight(143),
@@ -68,7 +69,7 @@ backgroundColor: "#070707E3"
       box7: {
         width: scaleWidth(281),
         height: scaleHeight(4.47),
-        backgroundColor: "#A35709",
+        backgroundColor: Colors.primary,
 
       },
 
@@ -80,7 +81,7 @@ backgroundColor: "#070707E3"
     
       },
       text5: {
-        color: "#FFFFFF",
+        color: Colors.white,
         fontSize: normalizeFont(18),
         lineHeight:scaleHeight(18),
         fontWeight:400,
@@ -98,8 +99,8 @@ backgroundColor: "#070707E3"
         gap: scaleWidth(10),
       },
       button: {
-        backgroundColor: "#242320",
-        borderColor: "#A35709",
+        backgroundColor: Colors.backgroundDark,
+        borderColor: Colors.primary,
         borderRadius: 4,
         borderWidth: 1,
          width:scaleWidth(64),
@@ -120,7 +121,7 @@ backgroundColor: "#070707E3"
 
     
       text6: {
-        color: "#D9D9D9",
+        color: Colors.text6primary,
         fontSize: normalizeFont(10), // Should match 12px height container
         lineHeight: scaleHeight(12), // Match container height
         textAlign: 'center',

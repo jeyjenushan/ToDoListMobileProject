@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, Pressable, Image, StyleSheet, TouchableOpacity } from 'react-native';
-import { normalizeFont, scaleHeight, scaleWidth } from '../responsive/responsive';
+import { normalizeFont, scaleHeight, scaleWidth } from '../constant/responsive';
+import { Colors } from '../constant/Colors';
 
 const TaskItem = ({
   task,
@@ -125,8 +126,8 @@ const styles = StyleSheet.create({
     width: scaleWidth(36),
     height: scaleHeight(36),
     borderWidth: 1,
-    backgroundColor: '#242320',
-    borderColor: '#A35709',
+    backgroundColor: Colors.backgroundDark,
+    borderColor: Colors.border,
   },
   image2: {
     width: scaleWidth(16),
@@ -147,8 +148,8 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     padding: 16,
     gap: 16,
-    backgroundColor: '#242320',
-    borderColor: '#A35709',
+    backgroundColor: Colors.backgroundDark,
+    borderColor: Colors.border,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
@@ -161,21 +162,21 @@ const styles = StyleSheet.create({
   rectangleContainer: {
     width: scaleWidth(32),
     height: scaleHeight(32),
-    backgroundColor: '#1B1A17',
+    backgroundColor: Colors.backgroundLight,
     borderRadius: 5,
     borderWidth: 2,
-    borderColor: '#A35709',
+    borderColor: Colors.border,
     justifyContent: 'center',
     alignItems: 'center',
   },
   crossIcon: {
     width: scaleWidth(10.97),
     height: scaleHeight(10.97),
-    tintColor: '#FF8303',
+    tintColor: Colors.accent,
     borderRadius: 1,
   },
   text: {
-    color: '#F0E3CA',
+    color: Colors.textPrimary,
     fontSize: normalizeFont(22),
     fontFamily: 'Roboto-Medium',
     fontWeight: 'normal',
@@ -183,7 +184,7 @@ const styles = StyleSheet.create({
   },
   text2: {
     fontFamily: 'Roboto-Regular',
-    color: '#F0E3CA',
+    color: Colors.textPrimary,
     fontSize: 14,
   },
 });

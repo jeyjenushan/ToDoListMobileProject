@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
-import { View, TextInput, Button, StyleSheet, SafeAreaView, ScrollView, Image, Text, Pressable } from 'react-native';
-import { useTaskStore } from '../store/taskStore';
-import { scaleWidth, scaleHeight, normalizeFont } from '../responsive/responsive';
+import { View, TextInput, StyleSheet, Image, Pressable } from 'react-native';
+import { useTaskStore } from '../services/taskStore';
+import { scaleWidth, scaleHeight, normalizeFont } from '../constant/responsive';
+import { Colors } from '../constant/Colors';
+
+
 
 const TodoInput = () => {
   const [title, setTitle] = useState('');
@@ -27,7 +30,7 @@ const TodoInput = () => {
 	
 		<TextInput
         placeholder={"Title..."}
-          placeholderTextColor="#F0E3CA"
+          placeholderTextColor={Colors.textPrimary}
         style={styles.input}
         value={title}
         onChangeText={setTitle}
@@ -38,7 +41,7 @@ const TodoInput = () => {
 
       <TextInput
     	placeholder={"About..."}
-        placeholderTextColor="#F0E3CA"
+        placeholderTextColor={Colors.textPrimary}
         style={styles.input2}
         value={note}
         onChangeText={setNote}
@@ -88,7 +91,7 @@ const styles = StyleSheet.create({
 	textInputContainer:{
 		width: scaleWidth(267),
 		height: scaleHeight(32),
-		backgroundColor:"#242320"
+	    backgroundColor: Colors.backgroundDark
 		
 
 
@@ -104,10 +107,11 @@ const styles = StyleSheet.create({
 		fontSize: normalizeFont(14),
 		fontWeight:400,
        lineHeight:scaleHeight(14),
-	   borderColor: "#FF8303",
+	   borderColor: Colors.accent,
 	   borderRadius: 4,
 	   borderWidth: 1,
-		color: '#F0E3CA',
+	   color: Colors.textPrimary,
+	   backgroundColor:Colors.backgroundText,
 
 	    paddingLeft: scaleWidth(14), // Replaced 'left' with padding
     paddingTop: scaleHeight(5), 
@@ -123,12 +127,13 @@ const styles = StyleSheet.create({
 		fontSize: normalizeFont(14),
 		fontWeight:400,
         lineHeight:scaleHeight(18),
-		borderColor: "#FF8303",
+		borderColor: Colors.accent,
 		borderRadius: 4,
 		borderWidth: 1,
 		paddingLeft: scaleWidth(14), // Replaced 'left' with padding
 		paddingTop: scaleHeight(5), 
-		color: '#F0E3CA',
+		backgroundColor:Colors.backgroundText,
+		color: Colors.textPrimary,
 	},
 
 
@@ -138,12 +143,12 @@ const styles = StyleSheet.create({
 		height: scaleHeight(70),
 		borderRadius: 8,
 		borderWidth: 2,
-		borderColor: '#FF8303',
+	    borderColor: Colors.accent,
 	  },
 	  addIcon: {
 		width: scaleWidth(24),
 		height: scaleHeight(24),
-		tintColor: '#FF8303',
+	    tintColor: Colors.accent,
 		borderRadius: 1,
 		marginTop:23,
 		marginLeft:23

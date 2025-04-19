@@ -2,9 +2,10 @@ import React, { useEffect } from 'react';
 import { StatusBar,SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native';
 import TodoInput from './components/TodoInput';
 import TodoList from './components/TodoList';
-import { useTaskStore } from './store/taskStore';
-import { loadTasksFromStorage } from "./utils/storage"
-import { scaleWidth } from './responsive/responsive'; 
+import { useTaskStore } from './services/taskStore';
+import { loadTasksFromStorage } from "./services/storage"
+import { scaleWidth } from './constant/responsive'; 
+import { Colors } from './constant/Colors';
 
 export default function App() {
   const { setTasks } = useTaskStore();
@@ -33,7 +34,7 @@ const styles = StyleSheet.create({
 
 	container: {
     flex: 1,
-		backgroundColor: "#1B1A17",
+      backgroundColor: Colors.backgroundDark
 	},
 
 });

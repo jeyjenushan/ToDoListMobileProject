@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { FlatList, View, Pressable, Text, StyleSheet, ScrollView } from 'react-native';
-import { useTaskStore } from '../store/taskStore';
+import { useTaskStore } from '../services/taskStore'
 import TaskItem from './TaskItem'; // Task Item Component
 import TaskModal from './TaskModal'; // Separate Modal Component
 import DeleteModal from './DeleteModal'; // Separate Delete Modal Component
-import { scaleWidth, scaleHeight, normalizeFont } from '../responsive/responsive'
+import { scaleWidth, scaleHeight, normalizeFont } from '../constant/responsive'
 import ShareSocial from './ShareSocial';
+import { Colors } from '../constant/Colors';
 const TodoList = () => {
   const { tasks, deleteTask, updateTask } = useTaskStore();
   const [selectedTaskId, setSelectedTaskId] = useState<number | null>(null);
@@ -157,13 +158,13 @@ const styles = StyleSheet.create({
   box: {
     width: scaleWidth(64),
     height: scaleHeight(3),
-    backgroundColor: "#FF8303",
+    backgroundColor: Colors.accent,
    
 	},
 	box2: {
     width: scaleWidth(64),
     height: scaleHeight(3),
-    backgroundColor: "#FF8303",
+    backgroundColor: Colors.accent,
 
   },
 
@@ -177,7 +178,7 @@ const styles = StyleSheet.create({
     
     justifyContent:"center",
     alignItems:"center",
-		color: "#FFFFFF",
+		color: Colors.white,
     fontSize: normalizeFont(24),
 	},
   column10: { 
