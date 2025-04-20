@@ -1,6 +1,7 @@
 // hooks/useTodoList.ts
 import { useState } from 'react';
 import { useTaskStore } from '../services/taskStore';
+import { shareTask } from './iconService';
 
 export const useTodoList = () => {
   const { tasks, deleteTask, updateTask } = useTaskStore();
@@ -42,6 +43,9 @@ export const useTodoList = () => {
     setEditedTitle(task.title);
     setEditedNote(task.note);
     setUpdateModalVisible(true);
+  };
+  const handleShare = (platform: string, taskId: number | null) => {
+    shareTask(platform, taskId, tasks, CloseSocialModel);
   };
 
   const cancelEditing = () => {
@@ -97,5 +101,6 @@ export const useTodoList = () => {
     toggleComplete,
     setEditedTitle,
     setEditedNote,
+    handleShare
   };
 };

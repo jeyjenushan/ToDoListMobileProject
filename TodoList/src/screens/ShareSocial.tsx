@@ -1,23 +1,16 @@
-import { Image, Modal, StyleSheet, TouchableWithoutFeedback, View } from "react-native";
+import { Image, Modal, StyleSheet, TouchableOpacity, View } from "react-native";
 import { normalizeFont, scaleHeight, scaleWidth } from '../constant/responsive';
 import { Colors } from "../constant/Colors";
 import { SOCIAL_ICONS } from "../constant/socialIcons";
 import { ShareSocialProps } from "../types/ShareSocialProps";
 
-
-
 const ShareSocial: React.FC<ShareSocialProps> = ({ 
   visible, 
   closeModal,
-  onIconPress 
+  onShare,
+  selectedTaskId,
+  tasks
 }) => {
-  const handleIconPress = (iconId: string) => {
-    if (onIconPress) {
-      onIconPress(iconId);
-    }
-
-  };
-
   return (
     <Modal
       transparent
@@ -25,34 +18,46 @@ const ShareSocial: React.FC<ShareSocialProps> = ({
       animationType="fade"
       onRequestClose={closeModal}
     >
-      <TouchableWithoutFeedback onPress={closeModal}>
-        <View style={styles.overlay}>
+      {/* Outer TouchableOpacity: Closes modal when tapping outside */}
+      <TouchableOpacity 
+        style={styles.overlay} 
+        activeOpacity={1} 
+        onPress={closeModal}
+      >
+        {/* Inner View: Prevents modal close when tapping inside the row */}
+        <View style={styles.rowContainer} onStartShouldSetResponder={() => true}>
           <View style={styles.row}>
             {SOCIAL_ICONS.map((icon) => (
-              <TouchableWithoutFeedback 
+              <TouchableOpacity 
                 key={icon.id}
-                onPress={() => handleIconPress(icon.id)}
+                onPress={() => {
+                  if (onShare) {
+                    onShare(icon.id, selectedTaskId, tasks);
+                  } else {
+                    closeModal();
+                  }
+                }}
+                activeOpacity={0.7}
+                style={styles.circle}
               >
-                <View style={styles.circle}>
-                  <Image source={icon.source} style={styles.icon} />
-                </View>
-              </TouchableWithoutFeedback>
+                <Image source={icon.source} style={styles.icon} />
+              </TouchableOpacity>
             ))}
           </View>
         </View>
-      </TouchableWithoutFeedback>
+      </TouchableOpacity>
     </Modal>
   );
 };
-
-
-export default ShareSocial;
 
 const styles = StyleSheet.create({
   overlay: {
     flex: 1,
     justifyContent: "flex-end",
-    backgroundColor: Colors.shareModelBackground
+    backgroundColor: 'rgba(0,0,0,0.5)'
+  },
+  rowContainer: {
+    // Prevents taps inside from closing modal
   },
   row: {
     flexDirection: "row",
@@ -61,26 +66,22 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 8,
     paddingVertical: scaleHeight(14),
     paddingHorizontal: scaleWidth(20),
-    marginHorizontal: scaleWidth(15),
-    alignItems: "center",
-    justifyContent: "center",
-    height:scaleHeight(76)
+    justifyContent: "space-around",
+    height: scaleHeight(76)
   },
   circle: {
     width: scaleWidth(48),
     height: scaleHeight(48),
     borderRadius: scaleWidth(24),
-   backgroundColor:Colors.circleBackground,
-    marginRight: scaleWidth(16),
+    backgroundColor: Colors.circleBackground,
     justifyContent: "center",
     alignItems: "center",
- 
   },
   icon: {
-    width:scaleWidth(24),
+    width: scaleWidth(24),
     height: scaleHeight(24),
-   
     resizeMode: "contain",
-
   },
 });
+
+export default ShareSocial;

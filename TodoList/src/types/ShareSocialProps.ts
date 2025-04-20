@@ -1,5 +1,9 @@
-export type ShareSocialProps = {
-    visible: boolean;
-    closeModal: () => void;
-    onIconPress?: (iconId: string) => void; // Optional handler for icon presses
-  };
+import { Task } from "./Task";
+
+export interface ShareSocialProps {
+  visible: boolean;
+  closeModal: () => void;
+  onShare?: (platform: string, taskId: number | null, tasks: any[]) => void;
+  selectedTaskId: number | null;
+  tasks: Task[]
+}

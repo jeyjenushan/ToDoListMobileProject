@@ -1,7 +1,7 @@
 // constants/socialIcons.ts
 export const SOCIAL_ICONS = [
     {
-      id: 'content',
+      id: 'clipboard',
       source: require('../../assets/Images/Content.png'),
     },
     {

@@ -32,6 +32,7 @@ const TodoList = () => {
     toggleComplete,
     setEditedTitle,
     setEditedNote,
+    handleShare
   } = useTodoList();
 
   return (
@@ -79,9 +80,12 @@ const TodoList = () => {
         cancelEditing={cancelEditing}
       />
 
-      <ShareSocial
+<ShareSocial
         visible={socialModel}
         closeModal={CloseSocialModel}
+        onShare={handleShare}
+        selectedTaskId={selectedTaskId}
+        tasks={tasks}
       />
     </View>
   );
