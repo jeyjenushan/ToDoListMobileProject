@@ -1,12 +1,12 @@
 # 📋 React Native To-Do List App
 
-A **feature-rich and visually clean To-Do List mobile application** developed using **React Native** and **TypeScript**, designed to manage daily tasks efficiently. This app supports task creation, editing, deletion, and viewing task details with smooth user interaction. It uses **Zustand** for state management and **AsyncStorage** for persistent local storage.
+A **feature-rich and visually clean To-Do List mobile application** developed using **React Native** and **TypeScript**, designed to manage daily tasks efficiently. This app supports task creation, editing, deletion, and viewing task details,sharing task with smooth user interaction. It uses **Zustand** for state management and **AsyncStorage** for persistent local storage.
 
 ---
 
 ### 🎥 Demo Video
 
-[Watch Demo](Readmefolder/assets/projectoverview.mp4)
+[Watch Demo](Readmefolder/assets/ProjectOverview.mp4)
 
 ---
 
