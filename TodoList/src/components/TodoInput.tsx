@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { View, TextInput, StyleSheet, Image, Pressable } from 'react-native';
 import { useTaskStore } from '../services/taskStore';
 import { scaleWidth, scaleHeight, normalizeFont } from '../constant/responsive';
@@ -10,14 +10,28 @@ const TodoInput = () => {
   const [title, setTitle] = useState('');
   const [note, setNote] = useState('');
   const { addTask } = useTaskStore();
+  const titleInputRef = useRef<TextInput>(null);
+  const noteInputRef = useRef<TextInput>(null);
+
+  useEffect(() => {
+    const focusSequence = async () => {
+      await new Promise(resolve => setTimeout(resolve, 100));
+      titleInputRef.current?.focus();
+      await new Promise(resolve => setTimeout(resolve, 300));
+      noteInputRef.current?.focus();
+    };
+    focusSequence();
+  }, []);
 
   const handleAdd = () => {
     if (title.trim()) {
       addTask({ title, note });
       setTitle('');
       setNote('');
+      // Re-focus both inputs after adding
+      titleInputRef.current?.focus();
+      setTimeout(() => noteInputRef.current?.focus(), 100);
     }
-	
   };
 
   return (
@@ -27,27 +41,30 @@ const TodoInput = () => {
 
 <View style={styles.column}>
 	<View style={styles.textInputContainer}>
-	
-		<TextInput
-        placeholder={"Title..."}
-          placeholderTextColor={Colors.textPrimary}
-        style={styles.input}
-        value={title}
-        onChangeText={setTitle}
-      />
-
-	</View>
-	<View style={styles.textInputContainer}>
-
-      <TextInput
-    	placeholder={"About..."}
-        placeholderTextColor={Colors.textPrimary}
-        style={styles.input2}
-        value={note}
-        onChangeText={setNote}
-      />
-	  
-			  </View>
+	<TextInput
+            ref={titleInputRef}
+            placeholder={"Title..."}
+            placeholderTextColor={Colors.textPrimary}
+            style={styles.input}
+            value={title}
+            onChangeText={setTitle}
+            autoFocus={true}
+            returnKeyType="next"
+            onSubmitEditing={() => noteInputRef.current?.focus()}
+          />
+        </View>
+        <View style={styles.textInputContainer}>
+          <TextInput
+            ref={noteInputRef}
+            placeholder={"About..."}
+            placeholderTextColor={Colors.textPrimary}
+            style={styles.input2}
+            value={note}
+            onChangeText={setNote}
+            autoFocus={true}
+            returnKeyType="done"
+          />
+        </View>
           </View>
 
 <Pressable onPress={handleAdd} style={styles.rectangleContainer}>

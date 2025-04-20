@@ -6,7 +6,7 @@ A **feature-rich and visually clean To-Do List mobile application** developed us
 
 ### 🎥 Demo Video
 
-[Watch Demo](readmefiles/Video.mp4)
+[Watch Demo](Readmefolder/assets/projectoverview.mp4)
 
 ---
 
@@ -64,22 +64,34 @@ npx react-native run-android
 ## 📁 Project Structure
 
 ```bash
-.
-├── assets/               # App icons, images
-├── features/             # Reusable components
-│   ├── EditModal.tsx
-│   ├── InputContainer.tsx
-│   ├── ShareModal.tsx
-│   ├── InfoModal.tsx
+src/
+├── assets/                  # App icons, images (to be created)
+├── components/              # Reusable UI components
+│   ├── ActionButton.tsx     # Moved to root of components
+│   ├── DeleteModal/
+│   │   └── DeleteModalComponent.tsx
+│   ├── TaskItem.tsx
+│   ├── TodoInput.tsx
+│   └── TodoList.tsx
+├── constants/               # Constant values
+│   ├── Colors.ts
+│   ├── FontFamily.ts
+│   ├── responsive.ts
+│   └── socialicons.ts
+├── screens/                 # Screen components
 │   ├── DeleteModal.tsx
-│   └── renderItem.tsx
-├── store/
-│   └── useToDoStore.ts   # Zustand store
-├── type/
-│   └── types.ts          # TypeScript types
-├── utils/
-│   └── shareTask.ts      # Sharing logic
-├── App.tsx               # Main entry point
+│   ├── ShareSocial.tsx
+│   └── TaskModal.tsx
+├── services/                # Business logic/services
+│   ├── storage.ts
+│   ├── taskStore.ts
+│   └── useTodoList.ts
+├── types/                   # Type definitions
+│   ├── DeleteModalProps.ts
+│   ├── ShareSocialProps.ts
+│   ├── Task.ts
+│   └── TaskModalProps.ts
+└── App.tsx                  # Main entry point
 └── ...
 ```
 
@@ -91,8 +103,7 @@ npx react-native run-android
 
   - `id`: Unique ID
   - `title`: Task title
-  - `about`: Task description
-  - `created`: Timestamp
+  - `note`: Task description
   - `completed` : Task Status
 
 - **`taskId`**: Incremental ID tracker
@@ -101,15 +112,15 @@ npx react-native run-android
 
 ## 👩‍💻 Author
 
-**Vipusa Sriharan**  
+**Jeyaruban Jenushan**  
 Third Year Software Engineering Undergraduate  
-[GitHub Profile](https://github.com/vipusrihar)
+[GitHub Profile](https://github.com/jeyjenushan)
 
 ---
 
 ### 📸 Screenshots
 
-|                                   |                                   |                                  |
-| --------------------------------- | --------------------------------- | -------------------------------- |
-| ![image1](readmefiles/first.png)  | ![image2](readmefiles/second.png) | ![image3](readmefiles/third.png) |
-| ![image4](readmefiles/fourth.png) | ![image5](readmefiles/fifth.png)  | ![image6](readmefiles/sixth.png) |
+|                                           |                                           |                                           |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| ![image1](Readmefolder/assets/image1.png) | ![image2](Readmefolder/assets/image2.png) | ![image3](Readmefolder/assets/image3.png) |
+| ![image4](Readmefolder/assets/image4.png) | ![image5](Readmefolder/assets/image5.png) | ![image6](Readmefolder/assets/image6.png) | ![image7](Readmefolder/assets/image7.png) |
