@@ -1,9 +1,23 @@
 import { Image, Modal, StyleSheet, TouchableWithoutFeedback, View } from "react-native";
 import { normalizeFont, scaleHeight, scaleWidth } from '../constant/responsive';
 import { Colors } from "../constant/Colors";
+import { SOCIAL_ICONS } from "../constant/socialIcons";
+import { ShareSocialProps } from "../types/ShareSocialProps";
 
 
-const ShareSocial = ({ visible, closeModal }: any) => {
+
+const ShareSocial: React.FC<ShareSocialProps> = ({ 
+  visible, 
+  closeModal,
+  onIconPress 
+}) => {
+  const handleIconPress = (iconId: string) => {
+    if (onIconPress) {
+      onIconPress(iconId);
+    }
+
+  };
+
   return (
     <Modal
       transparent
@@ -12,29 +26,25 @@ const ShareSocial = ({ visible, closeModal }: any) => {
       onRequestClose={closeModal}
     >
       <TouchableWithoutFeedback onPress={closeModal}>
-      <View style={styles.overlay}>
-        <View style={styles.row}>
-          <View style={styles.circle}>
-            <Image source={require("../../assets/Images/Content.png")} style={styles.icon} />
-          </View>
-          <View style={styles.circle}>
-            <Image source={require("../../assets/Images/vk.png")} style={styles.icon} />
-          </View>
-          <View style={styles.circle}>
-            <Image source={require("../../assets/Images/telegram.png")} style={styles.icon} />
-          </View>
-          <View style={styles.circle}>
-            <Image source={require("../../assets/Images/whatsapp.png")} style={styles.icon} />
-          </View>
-          <View style={styles.circle}>
-            <Image source={require("../../assets/Images/facebook.png")} style={styles.icon} />
+        <View style={styles.overlay}>
+          <View style={styles.row}>
+            {SOCIAL_ICONS.map((icon) => (
+              <TouchableWithoutFeedback 
+                key={icon.id}
+                onPress={() => handleIconPress(icon.id)}
+              >
+                <View style={styles.circle}>
+                  <Image source={icon.source} style={styles.icon} />
+                </View>
+              </TouchableWithoutFeedback>
+            ))}
           </View>
         </View>
-      </View>
       </TouchableWithoutFeedback>
     </Modal>
   );
 };
+
 
 export default ShareSocial;
 

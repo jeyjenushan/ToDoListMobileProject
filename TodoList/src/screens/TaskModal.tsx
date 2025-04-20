@@ -2,9 +2,10 @@ import React from 'react';
 import { Modal, SafeAreaView, ScrollView, TextInput, TouchableOpacity, Text, StyleSheet, View } from 'react-native';
 import { normalizeFont, scaleHeight, scaleWidth } from '../constant/responsive';
 import { Colors } from '../constant/Colors';
+import { TaskModalProps } from '../types/TaskModalProps';
 
 
-const TaskModal = ({
+const TaskModal: React.FC<TaskModalProps> = ({
   visible,
   cancelRequest,
   cancelEditing,
@@ -95,7 +96,7 @@ const styles = StyleSheet.create({
 
         minInputContainer:{
           width:scaleWidth(324),
-          height:scaleHeight(32),
+          height:scaleHeight(35),
           borderRadius:4,
           borderWidth:1,
           borderColor:Colors.primary,

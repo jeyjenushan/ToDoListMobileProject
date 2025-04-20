@@ -2,16 +2,17 @@ import React, { useState } from 'react';
 import { View, Text, Pressable, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { normalizeFont, scaleHeight, scaleWidth } from '../constant/responsive';
 import { Colors } from '../constant/Colors';
+import { TaskItemProps } from '../types/Task';
 
-const TaskItem = ({
+const TaskItem: React.FC<TaskItemProps> = ({
   task,
   confirmDelete,
   startEditing,
   toggleComplete,
   toggleExpand,
   selectedTaskId,
-
-  handleSocialModel
+  handleSocialModel,
+  cancelEditing
 
 }: any) => {
   let isExpanded = selectedTaskId === task.id;
@@ -88,11 +89,7 @@ const TaskItem = ({
                 style={styles.imageContainer}
                 onPress={() => toggleComplete(task.id, task.completed)}
               >
-                <Image
-                  source={require('../../assets/Images/i.png')}
-                  resizeMode="stretch"
-                  style={styles.image3}
-                />
+         <Text style={styles.idecorator}>i</Text>
               </Pressable>
 
               {!task.completed && (
@@ -145,6 +142,19 @@ const styles = StyleSheet.create({
     height: scaleHeight(18),
     top: scaleHeight(9),
     left: scaleWidth(16),
+  },
+  idecorator:{
+    fontSize: normalizeFont(16),
+    fontFamily: 'Roboto-Regular',
+    fontWeight: 700,
+    lineHeight:normalizeFont(18),
+    alignItems:"center",
+    justifyContent:'center',
+    color:Colors.white,
+    top:scaleHeight(9),
+    left:scaleWidth(16)
+  
+
   },
   row2: {
     width: scaleWidth(345),

@@ -4,7 +4,7 @@ import TodoInput from './components/TodoInput';
 import TodoList from './components/TodoList';
 import { useTaskStore } from './services/taskStore';
 import { loadTasksFromStorage } from "./services/storage"
-import { scaleWidth } from './constant/responsive'; 
+import { scaleHeight, scaleWidth } from './constant/responsive'; 
 import { Colors } from './constant/Colors';
 
 export default function App() {
@@ -22,7 +22,7 @@ export default function App() {
   
     
       <SafeAreaView  style={styles.container}>
-        <StatusBar hidden/>
+        <StatusBar/>
 	<TodoInput />
     <TodoList />
      </SafeAreaView>
@@ -33,8 +33,9 @@ export default function App() {
 const styles = StyleSheet.create({
 
 	container: {
-    flex: 1,
-      backgroundColor: Colors.backgroundDark
+       height:scaleHeight(844),
+       width:scaleWidth(390),
+      backgroundColor: Colors.backgroundLight
 	},
 
 });

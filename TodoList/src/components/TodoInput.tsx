@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
 	
 		flexDirection: "row",
 		gap:8,
-		marginTop: scaleHeight(23),
+		marginTop: scaleHeight(47),
 		marginLeft: scaleWidth(23),
 	    height:scaleHeight(70),
 	   width:scaleWidth(345),
@@ -111,7 +111,7 @@ const styles = StyleSheet.create({
 	   borderRadius: 4,
 	   borderWidth: 1,
 	   color: Colors.textPrimary,
-	   backgroundColor:Colors.backgroundText,
+	   backgroundColor:Colors.backgroundDark,
 
 	    paddingLeft: scaleWidth(14), // Replaced 'left' with padding
     paddingTop: scaleHeight(5), 
@@ -132,7 +132,7 @@ const styles = StyleSheet.create({
 		borderWidth: 1,
 		paddingLeft: scaleWidth(14), // Replaced 'left' with padding
 		paddingTop: scaleHeight(5), 
-		backgroundColor:Colors.backgroundText,
+		backgroundColor:Colors.backgroundDark,
 		color: Colors.textPrimary,
 	},
 
